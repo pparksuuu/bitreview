@@ -1,0 +1,55 @@
+package step02.assignment;
+
+// 2단계: 여러 명의 성적 정보를 받아서 처리하기
+public class test02 {
+    public static void main(String[] args) {
+        java.io.InputStream keyboard = System.in;
+        java.util.Scanner keyScan = new java.util.Scanner(keyboard);
+
+        String name1;
+        int kor1, eng1, math1;
+
+        System.out.print("입력? ");
+        name1 = keyScan.next();
+        kor1 = keyScan.nextInt();
+        eng1 = keyScan.nextInt();
+        math1 = keyScan.nextInt();
+        
+        int sum1 = kor1 + eng1 + math1;
+        float average1 = sum1 / 3;
+
+        String name2;
+        int kor2, eng2, math2;
+
+        System.out.print("입력? ");
+        name2 = keyScan.next();
+        kor2 = keyScan.nextInt();
+        eng2 = keyScan.nextInt();
+        math2 = keyScan.nextInt();
+        
+        int sum2 = kor2 + eng2 + math2;
+        float average2 = sum2 / 3;
+
+
+
+
+        System.out.println("========================");
+
+        System.out.print(name1);
+        System.out.print(" " + kor1);
+        System.out.print(" " + eng1);
+        System.out.print(" " + math1);
+        System.out.print(" " + sum1);
+        System.out.println(" " + average1);
+        
+        System.out.print(name2);
+        System.out.print(" " + kor2);
+        System.out.print(" " + eng2);
+        System.out.print(" " + math2);
+        System.out.print(" " + sum2);
+        System.out.println(" " + average2);
+        
+        
+        
+    }
+}
