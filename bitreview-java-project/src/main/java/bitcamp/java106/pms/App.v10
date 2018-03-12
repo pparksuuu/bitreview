@@ -4,7 +4,6 @@ import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.domain.Member;
 import java.util.Scanner;
 
-//ver 1.1 - member/view 명령을 구현한다.
 //ver 1.0 - member/list 명령을 구현한다.
 //ver 0.9 - member/add 명령을 구현한다.
     //회원 정보를 담을 새로운 데이터 타입을 정의한다 => Member.java
@@ -28,16 +27,18 @@ public class App {
     public static void main(String[] args) {
         Scanner keyScan = new Scanner(System.in);
 
-        Team[] teams = new Team[1000];
+        Team teams[] = new Team[1000];
         int teamIndex = 0;
 
-        Member[] members = new Member[1000];
+        Member members[] = new Member[1000];
         int memberIndex = 0;
 
         while (true) {
             System.out.print("명령> ");
             String[] arr = keyScan.nextLine().toLowerCase().split(" ");
+
             String menu = arr[0];
+            
             String option = null;
             if (arr.length == 2) {
                 option = arr[1];
@@ -58,6 +59,7 @@ public class App {
                 System.out.println("회원 상세조회 명령 : member/view 아이디");
                 System.out.println("종료 : quit");
                 System.out.println();
+                continue;
 
             } else if (menu.equals("team/add")) {
                 System.out.println("[팀 정보 입력]");
@@ -81,17 +83,22 @@ public class App {
 
                 teams[teamIndex++] = team;
 
+                System.out.println();
+                continue;
+
             } else if (menu.equals("team/list")) {
-                System.out.println("[팀 목록]");
                 for(int i = 0; i < teamIndex; i++) {
                     System.out.printf("%s, %d, %s ~ %s\n", 
                     teams[i].teamName, teams[i].maxQty,
                     teams[i].startDate, teams[i].endDate);
                 }
 
+                System.out.println();
+                continue;
 
             } else if (menu.equals("team/view")) {
                 System.out.println("[팀 정보 조회]");
+
                 if(option == null) {
                     System.out.println("팀명을 입력하시기 바랍니다.");
                     System.out.println();
@@ -99,15 +106,17 @@ public class App {
                 } 
 
                 Team team = null;
+
                 for (int i = 0; i < teamIndex; i++) {
                     if (option.equals(teams[i].teamName.toLowerCase())) {
                         team = teams[i];
-                        break;
                     }
                 }
 
                 if (team == null) {
                     System.out.println("해당 이름의 팀이 없습니다.");
+                    System.out.println();
+                    continue;
                 } else {
                     System.out.printf("팀명: %s\n", team.teamName);
                     System.out.printf("설명: %s\n", team.description);
@@ -131,40 +140,18 @@ public class App {
 
                 members[memberIndex++] = member;
 
+                System.out.println();
+                continue;
+
             } else if (menu.equals("member/list")) {
-                System.out.println("[회원 목록]");
                 for(int i = 0; i < memberIndex; i++) {
                     System.out.printf("%s, %s, %s\n", 
                     members[i].id, members[i].email, members[i].password);
                 }
 
-            } else if (menu.equals("member/view")) {
-                System.out.println("[회원 정보 조회]");
-                if(option == null) {
-                    System.out.println("아이디를 입력하시기 바랍니다.");
-                    System.out.println();
-                    continue;
-                } 
+                System.out.println();
+                continue;
 
-                Member member = null;
-
-                for (int i = 0; i < memberIndex; i++) {
-                    if (option.equals(members[i].id.toLowerCase())) {
-                        member = members[i];
-                        break;
-                    }
-                }
-
-                if (member == null) {
-                    System.out.println("해당 아이디의 회원이 없습니다.");
-                } else {
-                    System.out.printf("아이디: %s\n", member.id);
-                    System.out.printf("이메일: %s\n", member.email);
-                    System.out.printf("암호: %s\n", member.password);
-                }
-
-            } else {
-                System.out.println("명령어가 올바르지 않습니다.");
             }
 
             System.out.println();
