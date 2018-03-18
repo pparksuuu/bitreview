@@ -3,6 +3,10 @@ package step03;
 
 public class Exam01_1 {
     public static void main(String[] args) {
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 66d4222cb059f8b2f8cbadf21262133902c0df3f
         String name;
         int kor;
         int eng;
@@ -10,6 +14,7 @@ public class Exam01_1 {
         int sum;
         float aver;
 
+<<<<<<< HEAD
         name ="홍길동";
         kor = 100;
         eng = 90;
@@ -23,5 +28,21 @@ public class Exam01_1 {
         System.out.printf("수학 : %d\n", math);
         System.out.printf("합계 : %d\n", sum);
         System.out.printf("평균 : %f\n", aver);
+=======
+        name = "홍길동";
+        kor = 100;
+        eng = 90;
+        math = 80;
+        sum = kor + eng + math;
+        aver = sum / 3;
+
+        System.out.printf("이름: %s\n",name);
+        System.out.printf("국어: %d\n",kor);
+        System.out.printf("영어: %d\n",eng);
+        System.out.printf("수학: %d\n",math);
+        System.out.printf("합계: %d\n",sum);
+        System.out.printf("평균: %f\n",aver);
+
+>>>>>>> 66d4222cb059f8b2f8cbadf21262133902c0df3f
     }
 }

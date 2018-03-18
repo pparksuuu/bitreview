@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 //산술 연산자 : 기본 연산 단위
+=======
+//산술 연산자 : 암시적 형 변환
+>>>>>>> 66d4222cb059f8b2f8cbadf21262133902c0df3f
 package step04;
 
 public class Exam01_3 {
     public static void main(String[] args) {
+<<<<<<< HEAD
         /**
          * 리터럴 5, 6은 4바이트 정수 값이다.
          * 리터럴끼리 산술 연산한 결과도 리터럴로 간주한다.
@@ -15,5 +20,10 @@ public class Exam01_3 {
 
         byte x = 5, y = 6, z;
         z = x + y; //컴파일 오류!
+=======
+        byte b = 5 + 6;
+        byte x = 5, y = 6, z;
+        z = x + y; //컴파일 오류
+>>>>>>> 66d4222cb059f8b2f8cbadf21262133902c0df3f
     }
 }
