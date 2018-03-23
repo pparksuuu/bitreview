@@ -5,6 +5,7 @@ import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.domain.Member;
 import java.util.Scanner;
 
+// ver 0.2 - quit 명령어를 처리하는 코드를 메서드로 분리한다.
 // ver 0.1 - 명령어를 입력 받는 코드를 메서드로 분리한다.
 public class App {
     // 클래스 변수 = 스태틱 변수
@@ -16,6 +17,10 @@ public class App {
         return keyScan.nextLine().toLowerCase().split(" ");
     }
 
+    static void onQuit() {
+        System.out.println("안녕히 가세요!");
+    }
+
     public static void main(String[] args) {
         Team[] teams = new Team[1000];
         int teamIndex = 0;
@@ -25,7 +30,7 @@ public class App {
 
         while (true) {
             String[] arr = prompt();
-            
+
             String menu = arr[0];
             String option = null; // 문자열 없음!
             if (arr.length == 2) {
@@ -33,7 +38,7 @@ public class App {
             }
 
             if (menu.equals("quit")) {
-                System.out.println("안녕히 가세요!");
+                onQuit();
                 break;
             } else if (menu.equals("help")) {
                 System.out.println("[도움말]");

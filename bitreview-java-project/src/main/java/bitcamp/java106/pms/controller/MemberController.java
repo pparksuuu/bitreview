@@ -1,34 +1,13 @@
 package bitcamp.java106.pms.controller;
 
-
 import java.util.Scanner;
 import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.util.Console;
-
 
 public class MemberController {
-
     public static Scanner keyScan;
 
     static Member[] members = new Member[1000];
     static int memberIndex = 0;
-
-
-    public static void service(String menu, String option) {
-        if (menu.equals("member/add")) {
-            onMemberAdd();
-        } else if (menu.equals("member/list")) {
-            onMemberList();
-        } else if (menu.equals("member/view")) {
-            onMemberView(option);
-        } else if (menu.equals("member/update")) {
-            onMemberUpdate(option);
-        } else if (menu.equals("member/delete")) {
-            onMemberDelete(option);
-        } else {
-            System.out.println("명령어가 올바르지 않습니다.");
-        }
-    }
     
     static int getMemberIndex(String id) {
         for (int i = 0; i < memberIndex; i++) {
@@ -39,6 +18,23 @@ public class MemberController {
         }
         return -1;
     }
+  
+    public static void service(String menu, String option) {
+         if (menu.equals("member/add")) {
+            onMemberAdd();
+        } else if (menu.equals("member/list")) {
+            onMemberList();
+        } else if (menu.equals("member/view")) {
+            onMemberView(option);                
+        } else if (menu.equals("member/update")) {
+            onMemberUpdate(option);                
+        } else if (menu.equals("member/delete")) {
+            onMemberDelete(option);                
+        } else {
+            System.out.println("명령어가 올바르지 않습니다.");
+        }
+    }
+
 
 
     static void onMemberAdd() {
@@ -67,15 +63,14 @@ public class MemberController {
         }
     }
 
-    static void onMemberView(String option) {
+    static void onMemberView(String id) {
         System.out.println("[회원 정보 조회]");
-        if (option == null) {
+        if (id == null) {
             System.out.println("아이디를 입력하시기 바랍니다.");
-            System.out.println();
             return;
         }
         
-        int i = getMemberIndex(option);
+        int i = getMemberIndex(id);
 
         if (i == -1) {
             System.out.println("해당 아이디의 회원이 없습니다.");
@@ -87,23 +82,23 @@ public class MemberController {
         }
     }
 
-    static void onMemberUpdate(String option) {
+    static void onMemberUpdate(String id) {
         System.out.println("[회원 정보 변경]");
-        if (option == null) {
+        if (id == null) {
             System.out.println("아이디를 입력하시기 바랍니다.");
-            return; //continue와 동일한 역할
+            return;
         }
-
-        int i = getMemberIndex(option);
+        
+        int i = getMemberIndex(id);
 
         if (i == -1) {
-            System.out.println("해당 이름의 회원이 없습니다.");
+            System.out.println("해당 아이디의 회원이 없습니다.");
         } else {
             Member member = members[i];
             Member updateMember = new Member();
             System.out.printf("아이디(%s)? ", member.id);
             updateMember.id = keyScan.nextLine();
-            System.out.printf("이메일(%s)?", member.email);
+            System.out.printf("이메일(%s)? ", member.email);
             updateMember.email = keyScan.nextLine();
             System.out.printf("암호? ");
             updateMember.password = keyScan.nextLine();
@@ -112,21 +107,23 @@ public class MemberController {
         }
     }
 
-    static void onMemberDelete(String option) {
+    static void onMemberDelete(String id) {
         System.out.println("[회원 정보 삭제]");
-        if (option == null) {
+        if (id == null) {
             System.out.println("아이디를 입력하시기 바랍니다.");
-            return; //continue와 동일한 역할
+            return;
         }
         
-        int i = getMemberIndex(option);
+        int i = getMemberIndex(id);
 
         if (i == -1) {
             System.out.println("해당 아이디의 회원이 없습니다.");
         } else {
-            if(Console.confirm("정말 삭제하시겠습니까?")) {
+            System.out.print("정말 삭제하시겠습니까?(y/N) ");
+            String input = keyScan.nextLine().toLowerCase();
+            if (input.equals("y")) {
                 members[i] = null;
-                System.out.println("삭제 되었습니다.");
+                System.out.println("삭제하였습니다.");
             }
         }
     }

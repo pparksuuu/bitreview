@@ -1,42 +1,29 @@
 package bitcamp.java106.pms;
 
 
+import bitcamp.java106.pms.util.Console;
 import bitcamp.java106.pms.controller.TeamController;
 import bitcamp.java106.pms.controller.MemberController;
-import bitcamp.java106.pms.util.Console;
 import java.util.Scanner;
 
-// ver 0.2 -  회원 관리 기능(메서드)를 별도의 클래스에 추가
-// ver 0.1 -  팀 관리 기능(메서드)를 별도의 클래스에 추가
-//            사용자 입력 기능을 별도의 클래스로
+// ver 0.1 - 팀명으로 배열에서 팀 정보를 찾는 코드를 함수로 분리
+//           => getTeamIndex() 추가
+//           회원아이디로 배열에서 회원 정보를 찾는 코드를 함수로 분리
+//           => getMemberIndex() 추가
+
 public class App {
-    //클래스 변수 = 스태틱 변수
+    // 클래스 변수 = 스태틱 변수
     // => 클래스 안에서 어디에서나 사용할 수 있는 변수이다.
     static Scanner keyScan = new Scanner(System.in);
-    static String option = null;
+    static String option = null; 
 
-    static void onQuit() {
-        System.out.println("안녕히 가세요!");
-    }
-
-    static void onHelp() {
-        System.out.println("[도움말]");
-        System.out.println("팀 등록 명령 : team/add");
-        System.out.println("팀 조회 명령 : team/list");
-        System.out.println("팀 상세조회 명령 : team/view 팀명");
-        System.out.println("회원 등록 명령 : member/add");
-        System.out.println("회원 조회 명령 : member/list");
-        System.out.println("회원 상세조회 명령 : member/view 아이디");
-        System.out.println("종료 : quit");
-    }
+   
 
     public static void main(String[] args) {
-
-        Console.keyScan = keyScan;
-        TeamController.keyScan = keyScan;
-        MemberController.keyScan = keyScan;
-
         while (true) {
+            Console.keyScan = keyScan;
+            TeamController.keyScan = keyScan;
+            MemberController.keyScan = keyScan;
 
             String[] arr = Console.prompt();
 
@@ -48,15 +35,15 @@ public class App {
             }
 
             if (menu.equals("quit")) {
-                onQuit();
+                Console.onQuit();
                 break;
-            } else if (menu.equals("help")) {
-                onHelp();    
-            } else if (menu.startsWith("team/")) {
+            }  else if (menu.equals("help")) {
+                Console.onHelp();
+            }  else if (menu.startsWith("team/")) {
                 TeamController.service(menu, option);
-            } else if (menu.startsWith("memebr/")) {
+            } else if(menu.startsWith("member/")) {
                 MemberController.service(menu, option);
-            } else {
+            }  else {
                 System.out.println("명령어가 올바르지 않습니다.");
             }
 
