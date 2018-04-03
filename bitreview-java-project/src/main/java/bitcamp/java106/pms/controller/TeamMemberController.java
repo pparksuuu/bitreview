@@ -1,7 +1,6 @@
 // 팀 멤버 관리 기능을 모아 둔 클래스
 package bitcamp.java106.pms.controller;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.dao.MemberDao;
@@ -10,7 +9,7 @@ import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 
-public class TeamMemberController implements Controller {
+public class TeamMemberController {
     
     Scanner keyScan;
     TeamDao teamDao;
@@ -82,11 +81,10 @@ public class TeamMemberController implements Controller {
         System.out.println("[팀 멤버 목록]");
         System.out.print("회원들: ");
         
-        Iterator<String> iterator = teamMemberDao.getMembers(teamName);
-        if (iterator != null) {
-            while (iterator.hasNext()) {
-                System.out.printf("%s, ", iterator.next());
-            }
+        String[] members = teamMemberDao.getMembers(teamName);
+        
+        for (int i = 0; i < members.length; i++) {
+            System.out.printf("%s, ", members[i]);
         }
         System.out.println();
     }
