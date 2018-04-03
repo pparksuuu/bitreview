@@ -1,5 +1,6 @@
 package bitcamp.java106.pms.dao;
 
+
 import java.util.LinkedList;
 
 import bitcamp.java106.pms.domain.Board;
@@ -8,13 +9,13 @@ public class BoardDao {
     private LinkedList<Board> collection = new LinkedList<>();
     
     public void insert(Board board) {
-        collection.add(board);
+        this.collection.add(board);
     }
     
     public Board[] list() {
-        Board[] arr = new Board[collection.size()];
-        for (int i = 0; i < collection.size(); i++) 
-            arr[i] = collection.get(i);
+        Board[] arr = new Board[this.collection.size()];
+        for (int i = 0; i < this.collection.size(); i++) 
+            arr[i] = this.collection.get(i);
         return arr;
     }
     

@@ -1,42 +1,54 @@
 package bitcamp.java106.pms.dao;
 
-import bitcamp.java106.pms.util.ArrayList;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+
+import bitcamp.java106.pms.domain.Member;
+import bitcamp.java106.pms.domain.Team;
 
 public class TeamMemberDao {
     
-    private ArrayList teamCollection = new ArrayList();
-    private ArrayList memberCollection = new ArrayList();
-    
-    private int getIndex(String teamName, String memberId) {
-        String ptn = teamName.toLowerCase();
-        String pmi = memberId.toLowerCase();
-        for (int i = 0; i < teamCollection.size(); i++) {
-            String tn = teamCollection.get(i).toString().toLowerCase();
-            String mi = memberCollection.get(i).toString().toLowerCase();
-            if (tn.equals(ptn) && mi.equals(pmi)) {
-                return i;
-            }
-        }
-        return -1;
-    }
+    private HashMap<String, ArrayList<String>> collection = new HashMap<>();
     
     public int addMember(String teamName, String memberId) {
-        if (this.isExist(teamName, memberId)) { 
+        String teamNameLC = teamName.toLowerCase();
+        String memberIdLC = memberId.toLowerCase();
+        
+        ArrayList<String> members = collection.get(teamNameLC);
+        if (members == null) {
+            members = new ArrayList();
+            members.add(memberId);
+            collection.put(teamNameLC, members);
+            return 1;
+        }
+        
+        if (members.contains(memberIdLC)) {
             return 0;
         }
-        teamCollection.add(teamName);
-        memberCollection.add(memberId);
+        
+        members.add(memberIdLC);
         return 1;
+        
     }
+
     
     public int deleteMember(String teamName, String memberId) {
-        int index = this.getIndex(teamName, memberId);
-        if (index < 0) { // 존재하지 않는 멤버라면,
+        String teamNameLC = teamName.toLowerCase();
+        String memberIdLC = memberId.toLowerCase();
+        
+        ArrayList<String> members = collection.get(teamNameLC);
+        
+        if (members == null || !members.contains(memberIdLC))
             return 0;
-        }
-        teamCollection.remove(index);
-        memberCollection.remove(index);
+        
+        members.remove(memberIdLC);
         return 1;
+    }
+
+    public Iterator<String> getMembers(String teamName) {
+        ArrayList<String> members = collection.get(teamName);
+        if (members == null) 
     }
     
     public boolean isExist(String teamName, String memberId) {

@@ -15,7 +15,7 @@ public class MemberDao {
     public Member[] list() {
         Member[] arr = new Member[collection.size()];
         for (int i = 0; i < collection.size(); i++)
-            arr[i] = collection.get(i);
+            arr[i] = (Member) collection.get(i);
         return arr;
     }
     
@@ -23,7 +23,7 @@ public class MemberDao {
         int index = this.getMemberIndex(id);
         if (index < 0)
             return null;
-        return collection.get(index);
+        return (Member) collection.get(index);
     }
     
     public void update(Member member) {
@@ -43,7 +43,7 @@ public class MemberDao {
     // 다음 메서드는 내부에서만 사용할 것이기 때문에 공개하지 않는다.
     private int getMemberIndex(String id) {
         for (int i = 0; i < collection.size(); i++) {
-            Member originMember = collection.get(i);
+            Member originMember = (Member) collection.get(i);
             if (originMember.getId().toLowerCase().equals(id.toLowerCase())) {
                 return i;
             }
