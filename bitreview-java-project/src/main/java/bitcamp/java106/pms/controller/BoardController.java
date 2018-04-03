@@ -1,6 +1,7 @@
 package bitcamp.java106.pms.controller;
 
 import java.sql.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.dao.BoardDao;
@@ -50,8 +51,9 @@ public class BoardController implements Controller {
 
     void onBoardList() {
         System.out.println("[게시물 목록]");
-        Board[] list = boardDao.list();
-        for (Board board : list) {
+        Iterator<Board> lists = boardDao.list();
+        while (lists.hasNext()) {
+            Board board = lists.next();
             System.out.printf("%d, %s, %s\n",
                 board.getNo(), board.getTitle(), board.getCreatedDate());
         }
@@ -94,7 +96,9 @@ public class BoardController implements Controller {
             System.out.printf("설명(%s)? ", board.getContent());
             updateBoard.setContent(this.keyScan.nextLine());
             updateBoard.setCreatedDate(board.getCreatedDate());
-            boardDao.update(updateBoard);
+            
+            int index = boardDao.indexOf(board.getNo());
+            boardDao.update(index, updateBoard);
             System.out.println("변경하였습니다.");
         }
     }
