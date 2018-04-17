@@ -1,8 +1,11 @@
-package step22.ex04;
+package step22.ex07;
 
-public class Exam02_1 {
+import java.io.FileOutputStream;
+
+public class Exam01_1 {
     public static void main(String[] args) throws Exception {
-        DataOutputStream out = new DataOutputStream("temp/test4_2.data");
+        FileOutputStream fileOut = new FileOutputStream("temp/test7.data");
+        DataOutputStream out = new DataOutputStream(fileOut);
         
         Member member = new Member();
         member.name = "AB가각간";
@@ -14,6 +17,6 @@ public class Exam02_1 {
         out.writeBoolean(member.gender);
         
         out.close();
-        System.out.println("데이터 출력 완료 !");
+        System.out.println("데이터 출력 완료!");
     }
 }

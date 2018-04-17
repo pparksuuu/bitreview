@@ -1,36 +1,36 @@
-package step22.ex05;
+package step22.ex07;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
-public class BufferedOutputStream extends FileOutputStream {
+public class BufferedOutputStream {
+    
+    OutputStream out;
+    
     byte[] buf = new byte[8196];
     int cursor;
     
-    public BufferedOutputStream(String filename) throws Exception {
-        super(filename);
+    public BufferedOutputStream(OutputStream out) {
+        this.out = out;
     }
     
-    @Override
     public void write(int b) throws IOException {
         if (cursor == buf.length) {
-            this.write(buf);
+            out.write(buf);
             cursor = 0;
         }
         
         buf[cursor++] = (byte)b;
     }
     
-    @Override
     public void close() throws IOException {
         this.flush();
-        super.close();
+        out.close();
     }
     
-    @Override
     public void flush() throws IOException {
         if (cursor > 0) {
-            this.write(buf, 0, cursor);
+            out.write(buf, 0, cursor);
             cursor = 0;
         }
     }

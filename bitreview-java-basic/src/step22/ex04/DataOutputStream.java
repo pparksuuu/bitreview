@@ -3,12 +3,12 @@ package step22.ex04;
 import java.io.FileOutputStream;
 
 public class DataOutputStream extends FileOutputStream {
-    
     public DataOutputStream(String filename) throws Exception {
         super(filename);
     }
     
     public void writeUTF(String str) throws Exception {
+        // 상속 받은 write() 메서드를 사용하여 문자열 출력.
         byte[] bytes = str.getBytes("UTF-8");
         this.write(bytes.length);
         this.write(bytes);
@@ -22,7 +22,6 @@ public class DataOutputStream extends FileOutputStream {
     }
     
     public void writeLong(long value) throws Exception {
-        // 상속 받은 write() 메서드를 사용하여 long 값 출력
         this.write((int)(value >> 56));
         this.write((int)(value >> 48));
         this.write((int)(value >> 40));
@@ -34,14 +33,10 @@ public class DataOutputStream extends FileOutputStream {
     }
     
     public void writeBoolean(boolean value) throws Exception {
-        // 상속 받은 write() 메서드를 사용하여 boolean 값 출력
-        if (value) 
+        if(value)
             this.write(1);
-        else 
+        else
             this.write(0);
     }
-    
-    public static void main(String[] args) {
-        
-    }
+
 }

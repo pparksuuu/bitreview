@@ -1,8 +1,11 @@
-package step22.ex04;
+package step22.ex07;
 
-public class Exam02_2 {
+import java.io.FileInputStream;
+
+public class Exam01_2 {
     public static void main(String[] args) throws Exception {
-        DataInputStream in = new DataInputStream("temp/test4_2.data");
+        FileInputStream fileIn = new FileInputStream("temp/test7.data");
+        DataInputStream in = new DataInputStream(fileIn);
         
         Member member = new Member();
         
@@ -11,7 +14,6 @@ public class Exam02_2 {
         member.gender = in.readBoolean();
         
         in.close();
-        
         System.out.println(member);
         
     }

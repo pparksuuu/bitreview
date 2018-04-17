@@ -1,4 +1,4 @@
-package step22.ex04;
+package step22.ex07;
 
 public class Member {
     String name;
