@@ -1,23 +1,18 @@
 package bitcamp.java106.pms.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-// Team 클래스
-// => 팀 정보를 저장할 수 있는 메모리를 구조를 설계한 클래스이다.
-// => 즉 팀 정보를 위해 사용자(자바 언어 사용자. 즉 개발자)가 새로 정의한 데이터 타입이다.
-//
-public class Team {
+public class Team implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private String name;
     private String description;
     private int maxQty;
     private Date startDate;
     private Date endDate;
-    
-    // 사용자 정의 데이터 타입에서 메서드 정의란?
-    // => 새 데이터 타입의 값을 다룰 연산자를 정의하는 것을 의미한다.
-    public Team() {
-        
-    }
+
+    public Team() {}
     
     public Team(String name) {
         this.name = name;
@@ -69,6 +64,8 @@ public class Team {
     }
 }
 
+//ver 27 - java.io.Serializable 인터페이스 구현
+//ver 24 - 생성자 추가
 //ver 17 - toString() 오버라이딩.
 //         팀 멤버 관련 메서드를 TeamMemberDao 클래스로 옮긴다.
 //ver 16 - 캡슐화 적용. 겟터, 셋터 추가.

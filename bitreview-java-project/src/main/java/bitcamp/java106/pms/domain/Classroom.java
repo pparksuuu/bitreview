@@ -1,9 +1,12 @@
 package bitcamp.java106.pms.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Classroom {
-    private static int count;
+public class Classroom implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    public static int count;
     
     private int no;
     private String title;
@@ -25,6 +28,7 @@ public class Classroom {
         return no;
     }
     public void setNo(int no) {
+        // 외부에서 입력 받은 번호가 count 보다 클 때는 count의 값을 증가시켜야 한다.
         if (no >= count) {
             count = no + 1;
         }
@@ -57,3 +61,6 @@ public class Classroom {
     
     
 }
+
+//ver 27 - java.io.Serializable 인터페이스 구현
+//ver 24 - setNo() 변경 
