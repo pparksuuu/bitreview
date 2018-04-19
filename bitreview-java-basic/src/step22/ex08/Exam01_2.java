@@ -18,7 +18,8 @@ public class Exam01_2 {
         // 장신구/보조장치/플러그인(decorator)를 사용하여 String,int,boolean 값을 출력한다.
         long startTime = System.currentTimeMillis();
         
-        out.
+        out.write(member.name.getBytes());
+        out.close();
         
         //out.write();
         

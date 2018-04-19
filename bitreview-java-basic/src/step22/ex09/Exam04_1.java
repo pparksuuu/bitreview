@@ -1,4 +1,3 @@
-// Java I/O API 사용하기 - serialize와 transient 변경자
 package step22.ex09;
 
 import java.io.BufferedOutputStream;
@@ -6,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 public class Exam04_1 {
-
     public static void main(String[] args) throws Exception {
         FileOutputStream fileOut = new FileOutputStream("temp/test9_5.data");
         BufferedOutputStream bufOut = new BufferedOutputStream(fileOut);
@@ -20,22 +18,6 @@ public class Exam04_1 {
         s.compute();
         
         out.writeObject(s);
-
         out.close();
     }
-
 }
-
-// 용어 정리!
-// Serialize   : 객체 ===> 바이트 배열   (marshalling 이라고도 부른다.)
-// Deserialize : 바이트 배열 ===> 객체   (unmarshalling 이라고도 부른다.)
-// 
-
-
-
-
-
-
-
-
-

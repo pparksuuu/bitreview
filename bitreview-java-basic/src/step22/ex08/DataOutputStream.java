@@ -23,7 +23,7 @@ public class DataOutputStream extends OutputStream {
     
     public void writeUTF(String str) throws Exception {
         // 생성자에서 받은 출력 객체의 write() 메서드를 사용하여 문자열 출력
-        byte[] bytes = str.getBytes("UTF-8");
+        byte[] bytes = str.getBytes("UTF-16");
         out.write(bytes.length);
         out.write(bytes);
     }
