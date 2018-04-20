@@ -22,7 +22,6 @@ public class HTTPServer {
         
         while (true) {
             Socket socket = serverSocket.accept();
-            System.out.println("클라이언트 요청 처리중");
             processRequest(socket);
         }
     }

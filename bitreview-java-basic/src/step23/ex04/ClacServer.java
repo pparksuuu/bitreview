@@ -5,9 +5,9 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class CalcServer {
+public class ClacServer {
     public static void main(String[] args) throws Exception {
-        System.out.println("Server running...");
+        System.out.println("서버 실행 중...");
         
         ServerSocket ss = new ServerSocket(8888);
         
@@ -21,7 +21,7 @@ public class CalcServer {
             int b = in.readInt();
             int result = 0;
             
-            switch(op) {
+            switch (op) {
             case "+": result = a + b; break;
             case "-": result = a - b; break;
             case "*": result = a * b; break;
