@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationContext4 {
-    private ArrayList<File> list = new ArrayList<>();
+    private ArrayList<String> list = new ArrayList<>();
 
     public ApplicationContext4(String packageName) {
         String path = packageName.replace(".", "/");
@@ -16,10 +16,10 @@ public class ApplicationContext4 {
         File dir = new File(url.getPath());
         if (!dir.isDirectory())
             return;
-        findFiles(dir);
+        findFiles(dir, packageName);
     }
 
-    private void findFiles(File dir) {
+    private void findFiles(File dir, String packageName) {
         File[] files = dir.listFiles(new FileFilter() {
             public boolean accept(File pathname) {
                 if (pathname.isDirectory() ||
@@ -32,14 +32,16 @@ public class ApplicationContext4 {
         });
         for (File f : files) {
             if (f.isDirectory()) {
-                findFiles(f);
+                findFiles(f, packageName + "." + f.getName());
             } else {
-                this.list.add(f);
+                String classname = f.getName();
+                this.list.add(packageName + "." + 
+                        classname.substring(0, classname.length()-6));
             }
         }
     }
-    
-    public List<File> getFiles() {
+
+    public List<String> getFiles() {
         return this.list;
     }
 }
