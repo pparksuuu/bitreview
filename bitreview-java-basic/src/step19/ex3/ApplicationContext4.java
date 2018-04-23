@@ -14,6 +14,10 @@ public class ApplicationContext4 {
         File dir = new File(url.getPath());
         if (!dir.isDirectory())
             return;
-        filndFiles(dir);
+        findFiles(dir);
+    }
+    
+    private void findFiles(File dir) {
+        File
     }
 }
