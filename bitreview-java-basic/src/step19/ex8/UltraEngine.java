@@ -1,0 +1,21 @@
+package step19.ex8;
+
+public class UltraEngine extends Engine {
+    public UltraEngine() {
+        System.out.println("===> UltraEngine()");
+    }
+    
+    @Override
+    public void run() {
+        super.run();
+        System.out.println("쌩쌩... 달린다....");
+    }
+
+    @Override
+    public String toString() {
+        return "UltraEngine [toString()=" + super.toString() + ", getClass()="
+                + getClass() + ", hashCode()=" + hashCode() + "]";
+    }
+    
+    
+}
