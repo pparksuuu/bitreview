@@ -13,7 +13,7 @@ public class Exam02_1 {
         
         InputStream inputStream = Resources.getResourceAsStream(
                 "step25/ex5/mybatis-config02.xml"); 
-        SqlSessionFactory factory = 
+        SqlSessionFactory factory =  
                 new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = factory.openSession();
         
