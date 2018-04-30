@@ -11,12 +11,12 @@
 	유지보수의 일관성을 유지하라! -->
 <mapper namespace="BoardMapper">
 
-  <select id="selectBoard" resultType ="Board">
+  <select id="selectBoard" resultType ="step25.ex5.Board">
     select
-      bno as no,
-      titl as title,
-      cont as content,
-      rdt as registeredDate
+      bno,
+      titl,
+      cont,
+      rdt
     from ex_board
   </select>
 </mapper>

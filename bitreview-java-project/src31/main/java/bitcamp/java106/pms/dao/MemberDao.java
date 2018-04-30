@@ -13,8 +13,11 @@ import bitcamp.java106.pms.domain.Member;
 @Component
 public class MemberDao {
     public int delete(String id) throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-                Connection con = dataSource.getConnection();
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
+                "java106", "1111");
             PreparedStatement stmt = con.prepareStatement(
                 "delete from pms_member where mid=?");) {
             
@@ -24,8 +27,11 @@ public class MemberDao {
     }
     
     public List<Member> selectList() throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-                Connection con = dataSource.getConnection();
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
+                "java106", "1111");
             PreparedStatement stmt = con.prepareStatement(
                 "select mid, email from pms_member");
             ResultSet rs = stmt.executeQuery();) {
@@ -42,8 +48,11 @@ public class MemberDao {
     }
 
     public int insert(Member member) throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-                Connection con = dataSource.getConnection();
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
+                "java106", "1111");
             PreparedStatement stmt = con.prepareStatement(
                 "insert into pms_member(mid,email,pwd) values(?,?,sha2(?,224))");) {
             
@@ -56,8 +65,11 @@ public class MemberDao {
     }
 
     public int update(Member member) throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-                Connection con = dataSource.getConnection();
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
+                "java106", "1111");
             PreparedStatement stmt = con.prepareStatement(
                 "update pms_member set email=?, pwd=sha2(?,224) where mid=?");) {
             

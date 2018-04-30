@@ -1,4 +1,4 @@
-package step25.ex5;
+package step25.ex6;
 
 import java.io.Serializable;
 import java.sql.Date;
