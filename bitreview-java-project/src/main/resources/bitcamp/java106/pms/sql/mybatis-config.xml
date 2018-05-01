@@ -9,6 +9,7 @@
   <!-- 긴 이름의 클래스명을 사용하는 대신에 짧은 이름의 별명을 사용해보자! -->
   <typeAliases>
     <typeAlias type="bitcamp.java106.pms.domain.Board" alias="Board"/>
+    <typeAlias type="bitcamp.java106.pms.domain.Task" alias="Task"/>
   </typeAliases>
   
   <environments default="development">
@@ -28,5 +29,6 @@
   
   <mappers>
     <mapper resource="bitcamp/java106/pms/sql/BoardMapper.xml"/>
+    <mapper resource="bitcamp/java106/pms/sql/TaskMapper.xml"/>
   </mappers>
 </configuration>
