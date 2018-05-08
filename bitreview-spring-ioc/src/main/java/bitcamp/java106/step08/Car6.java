@@ -3,19 +3,19 @@ package bitcamp.java106.step08;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-public class Car2 {
+public class Car6 {
     String model;
     String maker;
     int cc;
     boolean auto;
     Date createdDate;
+    
+    @Autowired
+    @Qualifier("e2")
     Engine engine;
     
-    
-    public Car2() {
-        System.out.println("Car()");
-    }
     
     @Override
     public String toString() {
@@ -57,8 +57,6 @@ public class Car2 {
     public Engine getEngine() {
         return engine;
     }
-    
-    @Autowired
     public void setEngine(Engine engine) {
         this.engine = engine;
     }

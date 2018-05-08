@@ -4,16 +4,16 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Car2 {
+public class Car3 {
     String model;
     String maker;
     int cc;
     boolean auto;
     Date createdDate;
-    Engine engine;
+    @Autowired Engine engine;
     
     
-    public Car2() {
+    public Car3() {
         System.out.println("Car()");
     }
     
@@ -57,8 +57,6 @@ public class Car2 {
     public Engine getEngine() {
         return engine;
     }
-    
-    @Autowired
     public void setEngine(Engine engine) {
         this.engine = engine;
     }
