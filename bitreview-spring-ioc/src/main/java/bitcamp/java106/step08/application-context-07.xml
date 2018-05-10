@@ -8,6 +8,8 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     
+    
+    
         <context:annotation-config/>
         <!-- 이 태그를 추가하면, 개발자가 일일이 BeanPostProcessor를 등록할 필요 없이
         자등 등록한다.

@@ -13,8 +13,9 @@ public class Car6 {
     Date createdDate;
     
     @Autowired
-    @Qualifier("e2")
-    Engine engine;
+    @Qualifier("e2") // 의존 객체가 여러 개 있을 경우, 주입할 의존 객체의 이름을 지정하라!
+    Engine engine;   // 주의!
+                     // @Qualifier 애노테이션을 처리할 BeanPostProcessor를 등록해야 한다.
     
     
     @Override

@@ -11,7 +11,7 @@ public class Car5 {
     boolean auto;
     Date createdDate;
     
-    @Auto
+    @Autowired(required=false)
     Engine engine;
     
     
