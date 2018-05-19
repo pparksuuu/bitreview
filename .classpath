@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="bin/|src/src08/main/java/|src/" kind="src" path="bitreview-java-basic"/>
+	<classpathentry kind="src" path="bitreview-java-basic/bin"/>
+	<classpathentry excluding="src08/main/java/" kind="src" path="bitreview-java-basic/src"/>
+	<classpathentry kind="src" path="bitreview-java-basic/src/src08/main/java"/>
+	<classpathentry excluding="src30/main/java/|src/main/java/|src05/main/java/|src32/main/java/|src07/main/java/|src22/main/java/|src20/main/java/|src31/main/java/|src04/main/java/|src35/main/java/|src06/main/java/|src08/main/java/|src21/main/java/" kind="src" path="bitreview-java-project"/>
+	<classpathentry kind="src" path="bitreview-java-project/src/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src04/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src05/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src06/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src07/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src08/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src20/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src21/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src22/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src30/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src31/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src32/main/java"/>
+	<classpathentry kind="src" path="bitreview-java-project/src35/main/java"/>
+	<classpathentry excluding="src/main/java/|src/test/java/" kind="src" path="bitreview-spring-ioc"/>
+	<classpathentry kind="src" path="bitreview-spring-ioc/src/main/java"/>
+	<classpathentry kind="src" path="bitreview-spring-ioc/src/test/java"/>
+	<classpathentry excluding="src/main/java/" kind="src" path="bitreview-web01"/>
+	<classpathentry kind="src" path="bitreview-web01/src/main/java"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -18,6 +18,7 @@ import bitcamp.java106.pms.servlet.InitServlet;
 @SuppressWarnings("serial")
 @WebServlet("/classroom/add")
 public class ClassroomAddServlet extends HttpServlet {
+    
     ClassroomDao classroomDao;
     
     @Override
@@ -28,8 +29,8 @@ public class ClassroomAddServlet extends HttpServlet {
     @Override
     protected void doPost(
             HttpServletRequest request, 
-            HttpServletResponse response)
-            throws ServletException, IOException {
+            HttpServletResponse response) throws ServletException, IOException {
+        
         request.setCharacterEncoding("UTF-8");
         
         Classroom classroom = new Classroom();
@@ -46,7 +47,6 @@ public class ClassroomAddServlet extends HttpServlet {
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
         out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-        
         out.println("<title>강의 등록</title>");
         out.println("</head>");
         out.println("<body>");
@@ -64,6 +64,7 @@ public class ClassroomAddServlet extends HttpServlet {
     }
 }
 
+//ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - ClassroomController에서 add() 메서드를 추출하여 클래스로 정의.

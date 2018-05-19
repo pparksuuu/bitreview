@@ -1,3 +1,4 @@
+// Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ import bitcamp.java106.pms.servlet.InitServlet;
 
 @SuppressWarnings("serial")
 @WebServlet("/team/delete")
-public class TeamDeleteServlet extends HttpServlet {
+public class TeamDeleteController extends HttpServlet {
 
     TeamDao teamDao;
     TeamMemberDao teamMemberDao;
@@ -29,11 +30,11 @@ public class TeamDeleteServlet extends HttpServlet {
         taskDao = InitServlet.getApplicationContext().getBean(TaskDao.class);
     }
 
+    
     @Override
     protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-        
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         
@@ -49,26 +50,25 @@ public class TeamDeleteServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>팀 삭제 결과</h1>");
+        
         try {
-            taskDao.deleteByTeam(name);
             teamMemberDao.delete(name);
+            taskDao.deleteByTeam(name);
             int count = teamDao.delete(name);
+    
             if (count == 0) {
-                out.println("<p>해당 팀이 없습니다.</p>");
+                out.println("해당 이름의 팀이 없습니다.");
             } else {
-                out.println("<p>삭제하였습니다.</p>");
+                out.println("삭제하였습니다.");
             }
         } catch (Exception e) {
-            out.println("<p>삭제 실패!</p>");
+            out.println("삭제 실패!");
             e.printStackTrace(out);
         }
-        out.println("</body>");
-        out.println("</html>");
     }
     
 }
 
-//ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - TeamController에서 delete() 메서드를 추출하여 클래스로 정의.
