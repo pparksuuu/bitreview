@@ -1,8 +1,6 @@
 package bitcamp.java106.pms.servlet.board;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,32 +32,35 @@ public class BoardAddServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        // 클라이언트가 보낸 데이터가 어떤 문자표를 사용해서 작성한지 알아야만 
-        // String 객체(UTF-16)로 값을 꺼낼 수 있다. 
         request.setCharacterEncoding("UTF-8");
-        
-        
         
         try {
             Board board = new Board();
             board.setTitle(request.getParameter("title"));
             board.setContent(request.getParameter("content"));
-            board.setCreatedDate(new Date(System.currentTimeMillis()));
-            
+
             boardDao.insert(board);
             response.sendRedirect("list");
+            
         } catch (Exception e) {
+            // 예외가 발생하면 ErrorServlet으로 예외 내용을 출력하도록 실행을 위임한다.
+            // 1) 실행을 위임할 객체를 준비한다.
             RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             
+            // 2) 다른 서블릿에게 실행을 위임하기 전에 그 서블릿에 전달할 데이터가 있다면,
+            //    ServletRequest 보관소에 담아라.
             request.setAttribute("error", e);
             request.setAttribute("title", "게시물 등록 실패!");
             
+            // 3) 다른 서블릿으로 실행을 위임한다.
             요청배달자.forward(request, response);
         }
     }
 
 }
 
+//ver 39 - forward 적용
+//ver 38 - redirect 적용
 //ver 37 - BoardAddController 클래스를 서블릿으로 변경
 //         출력 결과를 HTML로 변경
 //         자동 Refresh 태그 추가

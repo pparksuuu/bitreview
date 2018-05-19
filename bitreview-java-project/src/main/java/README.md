@@ -1,10 +1,10 @@
 # 변경 내역
-- 컨트롤러 클래스를 서블릿 클래스로 변경
-- controller 패키지 제거
-- server 패키지 제거
-- ServerRequestAdapter, ServerResponseAdapter 클래스 제거
-- 입력폼 HTML 파일 추가
-
+- BoardAddServlet, BoardUpdateServlet, BoardDeleteServlet 변경
+- ClassroomAddServlet, ClassroomUpdateServlet, ClassroomDeleteServlet 변경
+- MemberAddServlet, MemberUpdateServlet, MemberDeleteServlet 변경
+- TeamAddServlet, TeamUpdateServlet, TeamDeleteServlet 변경
+- TeamMemberAddServlet, TeamMemberDeleteServlet 변경
+- TaskAddServlet, TaskUpdateServlet, TaskDeleteServlet, TaskListServlet 변경
 
 
 

@@ -1,10 +1,10 @@
-// Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.servlet.task;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +33,6 @@ public class TaskViewServlet extends HttpServlet {
         teamMemberDao = InitServlet.getApplicationContext().getBean(TeamMemberDao.class);
     }
     
-    
     @Override
     protected void doGet(
             HttpServletRequest request, 
@@ -53,10 +52,10 @@ public class TaskViewServlet extends HttpServlet {
         
         try {
             int no = Integer.parseInt(request.getParameter("no"));
-            Task task = taskDao.selectOne(no);
             
+            Task task = taskDao.selectOne(no);
             if (task == null) {
-                throw new Exception("해당 작업을 찾을 수 없습니다.\n");
+                throw new Exception("해당 작업을 찾을 수 없습니다.");
             }
             
             List<Member> members = teamMemberDao.selectListWithEmail(
@@ -97,11 +96,9 @@ public class TaskViewServlet extends HttpServlet {
                         member.getId());
             }
             
-
             out.println("        </select>");
             out.println("    </td>");
             out.println("</tr>");
-            
             out.println("<tr>");
             out.println("    <th>작업상태</th><td><select name='state'>");
             out.printf("        <option value='0' %s>작업대기</option>\n",
@@ -117,25 +114,22 @@ public class TaskViewServlet extends HttpServlet {
             out.printf("<a href='delete?no=%d&teamName=%s'>삭제</a>\n", 
                     no, task.getTeam().getName());
             out.println("</form>");
+
         } catch (Exception e) {
-            out.printf("<p>%s</p>\n", e.getMessage());
-            e.printStackTrace(out);
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
+            request.setAttribute("error", e);
+            request.setAttribute("title", "작업 상세조회 실패!");
+            // 다른 서블릿으로 실행을 위임할 때,
+            // 이전까지 버퍼로 출력한 데이터는 버린다.
+            요청배달자.forward(request, response);
         }
         out.println("</body>");
         out.println("</html>");
     }
-
-    public static String getStateLabel(int state) {
-        switch (state) {
-        case Task.READY: return "작업대기";
-        case Task.WORKING: return "작업중";
-        case Task.COMPLETE: return "작업완료";
-        default:
-            return null;
-        }
-    }
 }
 
+//ver 39 - forward 적용
+//ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - TaskController에서 view() 메서드를 추출하여 클래스로 정의.

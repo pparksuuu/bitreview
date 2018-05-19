@@ -17,9 +17,9 @@
     <!--  limit #{startIndex}, #{pageSize} -->
   </select>
   
-    <select id="selectListWithEmail" 
+  <select id="selectListWithEmail" 
           resultMap="memberMap" parameterType="string">
-    select tm.mid, m.email
+    select tm.mid, m.email 
     from pms2_team_member tm inner join pms2_member m on tm.mid=m.mid
     where tm.tnm=#{value}
     <!--  limit #{startIndex}, #{pageSize} -->
@@ -39,8 +39,8 @@
   <delete id="delete" parameterType="map">
     delete from pms2_team_member 
     where tnm=#{teamName}
-    <if test="memberId != null">
-        and mid=#{memberId}
+    <if test="memberId != null"> 
+          and mid=#{memberId}
     </if>
   </delete>
 </mapper>
