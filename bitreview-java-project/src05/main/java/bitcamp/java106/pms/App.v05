@@ -5,7 +5,11 @@ import java.util.Scanner;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 
-//ver 0.1 - 팀 변경, 회원 변경 기능 추가
+// ver 0.5 - member/add,list,view 명령어를 처리하는 코드를 메서드로 분리한다.
+// ver 0.4 - team/add,list,view 명령어를 처리하는 코드를 메서드로 분리한다.
+// ver 0.3 - help 명령어를 처리하는 코드를 메서드로 분리한다.
+// ver 0.2 - quit 명령어를 처리하는 코드를 메서드로 분리한다.
+// ver 0.1 - 명령를 입력 받는 코드를 메서드로 분리한다.
 public class App {
 
     // 클래스 변수 = 스태틱 변수
@@ -72,7 +76,6 @@ public class App {
         System.out.println("[팀 조회]");
 
         for (int i = 0; i < teamIndex; i++) {
-            if (teams[i] == null) continue;
             System.out.printf("%s, %d, %s ~ %s\n",
                     teams[i].name,
                     teams[i].maxQty,
@@ -93,7 +96,6 @@ public class App {
         Team team = null;
 
         for (int i = 0; i < teamIndex; i++) {
-            if (teams[i] == null) continue;
             if (option.equalsIgnoreCase(teams[i].name)) {
                 team = teams[i];
                 break;
@@ -108,79 +110,6 @@ public class App {
             System.out.printf("최대인원: %d\n", team.maxQty);
             System.out.printf("기간: %s ~ %s\n", 
                     team.startDate, team.endDate);
-        }
-    }
-
-    static void onTeamUpdate() {
-        if (option == null) {
-            System.out.println("팀명을 입력해주세요");
-            return;
-        }
-
-        Team team = null;
-
-        int i;
-        for (i = 0; i < teamIndex; i++) {
-            if (teams[i] == null) continue;
-            if (option.equalsIgnoreCase(teams[i].name)) {
-                team = teams[i];
-                break;
-            }
-        }
-
-        if (team == null) {
-            System.out.println("해당 이름의 팀이 없습니다.");
-        } else {
-            Team updateTeam = new Team();
-
-            System.out.printf("팀명(%s)?", team.name);
-            updateTeam.name = keyScan.nextLine();
-
-            System.out.printf("설명(%s)?", team.description);
-            updateTeam.description = keyScan.nextLine();
-
-            System.out.printf("최대인원(%d)?", team.maxQty);
-            updateTeam.maxQty = keyScan.nextInt();
-            keyScan.nextLine();
-
-            System.out.printf("시작일(%s)?", team.startDate);
-            updateTeam.startDate = keyScan.nextLine();
-
-            System.out.printf("종료일(%s)?", team.endDate);
-            updateTeam.endDate = keyScan.nextLine();
-
-            teams[i] = updateTeam;
-        }
-    }
-
-    static void onTeamDelete() {
-
-        if (option == null) {
-            System.out.println("팀명을 입력하시기 바랍니다.");
-            System.out.println();
-            return;
-        }
-
-        Team team = null;
-
-        int i;
-        for (i = 0; i < teamIndex; i++) {
-            if (teams[i] == null) continue;
-            if (option.equalsIgnoreCase(teams[i].name)) {
-                team = teams[i];
-                break;
-            }
-        }
-
-        if (team == null) {
-            System.out.println("해당 이름의 팀이 없습니다.");
-        } else {
-            System.out.print("정말 삭제하시겠습니까?(y/N)");
-            String input = keyScan.nextLine();
-            if (input.equalsIgnoreCase("y")) {
-                teams[i] = null;
-                System.out.println("삭제하였습니다.");
-            } 
         }
     }
 
@@ -203,7 +132,6 @@ public class App {
     static void onMemberList() {
         System.out.println("[회원 목록]");
         for (int i = 0; i < memberIndex; i++) {
-            if (teams[i] == null) continue;
             System.out.printf("%s, %s, %s\n",
                     members[i].id,
                     members[i].email,
@@ -220,7 +148,6 @@ public class App {
         Member member = null;
 
         for (int i = 0; i < memberIndex; i++) {
-            if (teams[i] == null) continue;
             if (option.equalsIgnoreCase(members[i].id)) {
                 member = members[i];
                 break;
@@ -251,18 +178,18 @@ public class App {
             if (menu.equalsIgnoreCase("quit")) {
                 onQuit();
                 break;
+
             } else if (menu.equalsIgnoreCase("help")) {
                 onHelp();
+
             } else if (menu.equalsIgnoreCase("team/add")) {
                 onTeamAdd();
+
             } else if (menu.equalsIgnoreCase("team/list")) {
                 onTeamList();
             } else if(menu.equalsIgnoreCase("team/view")) {
                 onTeamView();
-            } else if(menu.equalsIgnoreCase("team/update")) {
-                onTeamUpdate();
-            } else if(menu.equalsIgnoreCase("team/delete")) {
-                onTeamDelete();
+
             } else if (menu.equalsIgnoreCase("member/add")) {
                 onMemberAdd();
             } else if (menu.equalsIgnoreCase("member/list")) {
