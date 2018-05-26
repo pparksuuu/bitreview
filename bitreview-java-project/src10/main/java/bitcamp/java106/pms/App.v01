@@ -3,11 +3,12 @@ package bitcamp.java106.pms;
 
 import java.util.Scanner;
 
-import bitcamp.java106.pms.controller.BoardController;
 import bitcamp.java106.pms.controller.MemberController;
 import bitcamp.java106.pms.controller.TeamController;
 import bitcamp.java106.pms.util.Console;
 
+
+// ver 0.1 - member 메뉴를 처리하는 코드를 MemberController로 옮긴다.
 public class App {
     static Scanner keyScan = new Scanner(System.in);
 
@@ -30,10 +31,8 @@ public class App {
 
     public static void main(String[] args) {
         // 클래스를 사용하기 전에 필수 값을 설정한다.
-        TeamController teamController = new TeamController(keyScan);
-        MemberController memberController = new MemberController(keyScan);
-        BoardController boardController = new BoardController(keyScan);
-        
+        MemberController.keyScan = keyScan;
+        TeamController.keyScan = keyScan;
         Console.keyScan = keyScan;
         
         while (true) {
@@ -51,12 +50,18 @@ public class App {
                 break;
             } else if (menu.equals("help")) {
                 onHelp();
-            } else if (menu.startsWith("team/")) {
-                teamController.service(menu, option);
+            } else if (menu.equals("team/add")) {
+                TeamController.onTeamAdd();
+            } else if (menu.equals("team/list")) {
+                TeamController.onTeamList();
+            } else if (menu.equals("team/view")) {
+                TeamController.onTeamView(option);
+            } else if (menu.equals("team/update")) {
+                TeamController.onTeamUpdate(option);
+            } else if (menu.equals("team/delete")) {
+                TeamController.onTeamDelete(option);
             } else if (menu.startsWith("member/")) {
-                memberController.service(menu, option);
-            } else if (menu.startsWith("board/")) {
-                boardController.service(menu, option);
+                MemberController.service(menu, option);
             } else {
                 System.out.println("명령어가 올바르지 않습니다.");
             }

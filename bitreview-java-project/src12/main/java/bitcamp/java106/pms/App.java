@@ -8,6 +8,12 @@ import bitcamp.java106.pms.controller.MemberController;
 import bitcamp.java106.pms.controller.TeamController;
 import bitcamp.java106.pms.util.Console;
 
+// ver 0.2 - 회원 관리 기능을 별도의 클래스로 옮긴다.
+//           => controller.MemberController 클래스 추가
+// ver 0.1 - 팀 관리 기능(메서드)을 별도의 클래스로 옮긴다.
+//           => controller.TeamController 클래스 추가.
+//           사용자 입력 기능을 별도의 클래스로 옮긴다.
+//           => util.Console 클래스 추가.
 public class App {
     static Scanner keyScan = new Scanner(System.in);
 
