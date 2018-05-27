@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/step09/ex1/exam01")
 public class Exam01 extends HttpServlet {
     @Override
-    protected void doGet(
+    protected void doGet( 
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
