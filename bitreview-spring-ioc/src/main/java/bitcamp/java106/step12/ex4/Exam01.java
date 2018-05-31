@@ -19,7 +19,7 @@ public class Exam01 {
         BoardDao boardDao = iocContainer.getBean(BoardDao.class);
         
         // 1) 게시물 입력
-        Board board = new Board();
+        Board board = new Board(); 
         board.setTitle("제목입니다.");
         board.setContent("내용입니다.");
         boardDao.insert(board);
