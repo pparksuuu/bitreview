@@ -21,6 +21,9 @@ dependencies {
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
     testCompile 'junit:junit:4.12'
+    
+    // 로컬 .jar 파일 등록
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 
