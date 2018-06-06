@@ -1,33 +1,48 @@
 package bitcamp.java106.pms.dao;
 
-import java.util.List;
-
 import bitcamp.java106.pms.domain.Team;
 
-public interface TeamDao {
-
-    public int delete(String name);
-    public List<Team> selectList();
-    public int insert(Team team);
-    public int update(Team team);
-    public Team selectOne(String name);
-    public Team selectOneWithMembers(String name);
+public class TeamDao {
+    Team[] teams = new Team[1000];
+    int teamIndex = 0;
+    
+    public void insert(Team team) {
+        teams[teamIndex++] = team;
+    }
+    
+    public Team[] list() {
+        Team[] arr = new Team[teamIndex];
+        for (int i = 0; i < teamIndex; i++)
+            arr[i] = teams[i];
+        return arr;
+    }
+    
+    public Team get(String name) {
+        int i = this.getTeamIndex(name);
+        if (i == -1) 
+            return null;
+        return teams[i];
+    }
+    
+    public void update(Team team) {
+        int i = this.getTeamIndex(team.name);
+        if (i != -1)
+            teams[i] = team;
+    }
+    
+    public void delete(String name) {
+        int i = getTeamIndex(name);
+        if (i != -1)
+            teams[i] = null;
+    }
+    
+    private int getTeamIndex(String name) {
+        for (int i = 0; i < teamIndex; i++) {
+            if (teams[i] == null) continue;
+            if (name.equals(teams[i].name.toLowerCase())) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
-
-//ver 42 - JSP 적용에 따라 Team 정보를 가져올 때 그 팀의 Member 정보도 함께 가져온다.
-//         selectOneWithMembers() 추가
-//ver 33 - Mybatis 적용 
-//ver 32 - DB 커넥션 풀 적용
-//ver 31 - JDBC API 적용
-//ver 24 - File I/O 적용
-//ver 23 - @Component 애노테이션을 붙인다.
-//ver 22 - 추상 클래스 AbstractDao를 상속 받는다.
-//ver 19 - 우리 만든 ArrayList 대신 java.util.LinkedList를 사용하여 목록을 다룬다. 
-//ver 18 - ArrayList 클래스를 적용하여 객체(의 주소) 목록을 관리한다.
-//ver 16 - 인스턴스 변수를 직접 사용하는 대신 겟터, 셋터 사용.
-//ver 14 - TeamController로부터 데이터 관리 기능을 분리하여 TeamDao 생성.
-
-
-
-
-
