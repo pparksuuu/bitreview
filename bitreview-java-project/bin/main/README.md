@@ -1,6 +1,1 @@
-# 변경 내역
-- MemberController.java 변경
-- TeamController.java 변경
-- TeamMemberController.java 추가
-- App.java 변경
-- Team.java 변경
+애플리케이션 설정 파일을 두는 폴더

@@ -11,7 +11,7 @@ public class Team {
     public Member[] members = new Member[10];
     
     public int addMember(Member member) {
-        for (int i = 0; i < members.length; i++) {
+        for (int i = 0; i < this.members.length; i++) {
             if (this.members[i] == null) {
                 this.members[i] = member;
                 return 1;
@@ -20,10 +20,10 @@ public class Team {
         return 0;
     }
     
-    public int deleteMember(String memberId) {
+    public int deleteMember (String memberId) {
         for (int i = 0; i < this.members.length; i++) {
             if (this.members[i] == null) continue;
-            if (this.members[i].id.equals(memberId)) {
+            if (this.members[i].equals(memberId)) {
                 this.members[i] = null;
                 return 1;
             }
@@ -33,8 +33,8 @@ public class Team {
     
     public boolean isExist(String memberId) {
         for (int i = 0; i < this.members.length; i++) {
-            if (this.members[i] == null) continue;
-            if (this.members[i].id.equals(memberId)) {
+            if (members[i] == null) continue;
+            if (members[i].id.equals(memberId)) {
                 return true;
             }
         }

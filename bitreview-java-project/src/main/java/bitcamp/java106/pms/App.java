@@ -6,6 +6,7 @@ import java.util.Scanner;
 import bitcamp.java106.pms.controller.BoardController;
 import bitcamp.java106.pms.controller.MemberController;
 import bitcamp.java106.pms.controller.TeamController;
+import bitcamp.java106.pms.controller.TeamMemberController;
 import bitcamp.java106.pms.util.Console;
 
 public class App {
@@ -33,7 +34,7 @@ public class App {
         TeamController teamController = new TeamController(keyScan);
         MemberController memberController = new MemberController(keyScan);
         BoardController boardController = new BoardController(keyScan);
-        
+        TeamMemberController teamMemberController = new TeamMemberController(keyScan);
         Console.keyScan = keyScan;
         
         while (true) {
@@ -51,8 +52,8 @@ public class App {
                 break;
             } else if (menu.equals("help")) {
                 onHelp();
-            } else if (menu.startsWith("team/member")) {
-                teamController.service(menu, option);
+            } else if (menu.startsWith("team/member/")) {
+                teamMemberController.service(menu, option);
             } else if (menu.startsWith("team/")) {
                 teamController.service(menu, option);
             } else if (menu.startsWith("member/")) {
