@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>반복문 - for(... of ...)</h1>
+<script>
+"use strict"
+
+var obj2 = new Map();
+obj2.set("name", "홍길동");
+obj2.set("age", 20);
+
+for (var x of obj2) {
+	console.log(x);
+	console.log(x[0], "=", x[1]);
+}
+
+// deconstructuring
+for (var [key,value] of  obj2) {
+	console.log(key, "=", value);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
