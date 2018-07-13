@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>객체 - 정의</h1>
+    <script>
+    "use strict"
+    var obj = new Object()
+
+    obj.name = "홍길동"
+    obj.f1 = () => console.log("f1()...")
+
+    var obj2 = new Object()
+    obj2.v4 = () => console.log("v4()");
+
+    obj.other = obj2;
+
+    obj.f1();
+    obj.other.v4();
+
+    </script>
+
+  </body>
+</html>
