@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+<h1>자바스크립트 글로벌 함수 - JSON.stringify()</h1>
+<textarea id="ta" cols="80" rows="10"></textarea>
+<button id="btn1">실행</button>
+<script>
+"use strict"
+// 자바스크립트 객체를 JSON 문자열로 바꾸고 싶을 때 사용.
+var ta = document.getElementById("ta");
+document.getElementById("btn1").onclick = () => {
+	var obj = new Object();
+	obj.name = "홍길동";
+	obj["age"] = 20;
+	obj.tel = '111-2222';
+	ta.value = JSON.stringify(obj);
+}
+</script>
+
+</body>
+</html>

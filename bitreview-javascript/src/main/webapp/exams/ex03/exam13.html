@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+<h1>함수 - 애로우 (arrow) 함수를 아규먼트로 전달학.</h1>
+<script>
+"use stricft"
+
+function play(fn) {
+	console.log("함수가 리턴한 값 =", fn(100, 200))
+}
+
+function plus(a, b) {
+	return a + b;
+}
+
+play(plus);
+
+// 익명 함수를 정의하여 바로 아규먼트로 넘긴다.
+play(function(a, b) {return a - b})
+
+// arrow function
+play((a, b) => a * b)
+
+play((a, b) => {
+	var sum = 0;
+	for (var i = a; i <= b; i ++) {
+		sum += i;
+	}
+	return sum
+})
+
+</script>
+
+</body>
+</html>

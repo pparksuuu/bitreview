@@ -1,0 +1,37 @@
+
+
+plugins {
+    // 자바 관련 작업이 정의된 플러그인
+    id 'java'
+
+    // 이클립스 웹 프로젝트 설정 파일을 다루는 작업이 정의된 플러그인
+    id 'eclipse-wtp' // ='eclipse' 플러그인 + 웹 관련 작업들
+
+    // war 파일을 다루는 작업이 정의된 플러그인
+    id 'war'
+}
+
+
+
+
+dependencies {
+
+    compile 'com.google.guava:guava:23.0'
+
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+    testCompile 'junit:junit:4.12'
+    
+    // JSP 확장 태그인 JSTL 라이브러리
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    
+    // 로컬 .jar 파일 등록
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+repositories {
+
+
+    jcenter()
+}

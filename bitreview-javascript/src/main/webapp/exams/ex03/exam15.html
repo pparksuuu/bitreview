@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>자바스크립트 글로벌 함수 - eval()</h1>
+		<textarea id="ta" cols="80" rows="10"></textarea>
+		<button id="btn1">실행</button>
+		<script>
+		"use strict"
+		var ta = document.getElementById("ta");
+
+		document.getElementById("btn1").onclick = () => {
+			// input, textarea, select 등 입력폼의 항목을 꺼낼 때는
+			// innerHTML이 아니라 value 프로퍼티를 사용해야 한다.
+			var str = ta.value;
+
+			// eval(자바스크립트 코드)
+			eval(str);
+			console.log("name=", window.name);
+		}
+
+		</script>
+	</body>
+</html>
