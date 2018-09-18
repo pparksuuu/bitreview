@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TeamDao;
+import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 
@@ -11,11 +12,13 @@ public class TeamMemberController {
     Scanner keyScan;
     TeamDao teamDao;
     MemberDao memberDao;
+    TeamMemberDao teamMemberDao;
     
-    public TeamMemberController(Scanner scanner, TeamDao teamDao, MemberDao memberDao) {
+    public TeamMemberController(Scanner scanner, TeamDao teamDao, MemberDao memberDao, TeamMemberDao teamMemberDao) {
        this.keyScan = scanner;
        this.teamDao = teamDao;
        this.memberDao = memberDao;
+       this.teamMemberDao = teamMemberDao;
     }
     
     public void service(String menu, String option) {
@@ -74,6 +77,9 @@ public class TeamMemberController {
         
         System.out.println("[팀 멤버 목록]");
         System.out.print("회원들 : ");
+        
+        String[] members = teamMemberDao.getMembers(teamName);
+        
         for (int i = 0; i < team.getMembers().length; i++) {
             if (team.getMembers()[i] == null) continue;
             System.out.printf("%s, ", team.getMembers()[i].getId());

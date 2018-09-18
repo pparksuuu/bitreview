@@ -5,14 +5,14 @@ import java.sql.Date;
 public class Task {
     public static final int READY = 0;
     public static final int WORKING = 1;
-    public static final int COMPLEMETE = 9;
+    public static final int COMPLETE = 9;
     
     private int no;
     private String title;
     private Date startDate;
     private Date endDate;
     private int state;
-    private Member member;
+    private Member worker;
     private Team team;
     
     public Task(Team team) {
@@ -67,12 +67,12 @@ public class Task {
         this.state = state;
     }
 
-    public Member getMember() {
-        return member;
+    public Member getWorker() {
+        return worker;
     }
 
-    public void setMember(Member member) {
-        this.member = member;
+    public void setWorker(Member worker) {
+        this.worker = worker;
     }
 
     public Team getTeam() {
