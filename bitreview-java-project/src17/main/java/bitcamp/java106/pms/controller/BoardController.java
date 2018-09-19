@@ -14,9 +14,9 @@ public class BoardController {
     public BoardController(Scanner scanner) {
         this.keyScan = scanner;
     }
-
+    
     public void service(String menu, String option) {
-        if (menu.equals("board/add")) {
+         if (menu.equals("board/add")) {
             onBoardAdd();
         } else if (menu.equals("board/list")) {
             onBoardList();
@@ -30,17 +30,17 @@ public class BoardController {
             System.out.println("명령어가 올바르지 않습니다.");
         }
     }
-
+    
     private void onBoardAdd() {
         System.out.println("[게시글 등록]");
         Board board = new Board();
-
+        
         System.out.print("제목? ");
         board.setTitle(this.keyScan.nextLine());
 
         System.out.print("내용? ");
         board.setContent(this.keyScan.nextLine());
-
+        
         System.out.print("등록일? ");
         board.setCreatedDate(Date.valueOf(this.keyScan.nextLine()));
 
@@ -51,10 +51,10 @@ public class BoardController {
     private void onBoardList() {
         System.out.println("[게시글 목록]");
         Board[] list = boardDao.list();
-        for (Board board : list) {
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == null) continue;
             System.out.printf("%d, %s, %s\n", 
-                    board.getNo(), board.getTitle(),
-                    board.getCreatedDate());
+                i ,list[i].getTitle(), list[i].getCreatedDate());
         }
     }
 
@@ -64,9 +64,9 @@ public class BoardController {
             System.out.println("게시물 번호를 입력하시기 바랍니다.");
             return;
         }
-
+        
         Board board = boardDao.get(Integer.parseInt(no));
-
+        
         if (board == null) {
             System.out.println("유효하지 않은 게시물 번호입니다.");
         } else {
@@ -82,7 +82,7 @@ public class BoardController {
             System.out.println("아이디를 입력하시기 바랍니다.");
             return;
         }
-
+        
         Board board = boardDao.get(Integer.parseInt(no));
 
         if (board == null) {
@@ -106,7 +106,7 @@ public class BoardController {
             System.out.println("아이디를 입력하시기 바랍니다.");
             return;
         }
-
+        
         int i = Integer.parseInt(no);
         Board board = boardDao.get(i);
 

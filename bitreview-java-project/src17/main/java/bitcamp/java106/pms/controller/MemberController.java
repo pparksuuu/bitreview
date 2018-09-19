@@ -53,8 +53,9 @@ public class MemberController {
         System.out.println("[회원 목록]");
         Member[] list = memberDao.list();
         for (int i = 0; i < list.length; i++) {
-            System.out.printf("%s, %s, %s\n", 
-                    list[i].getId(), list[i].getEmail(), list[i].getPassword());
+            if (list[i] == null) continue;
+            System.out.printf("%s, %s \n", 
+                    list[i].getId(), list[i].getEmail());
         }
     }
 

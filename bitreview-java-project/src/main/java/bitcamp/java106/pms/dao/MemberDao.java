@@ -1,48 +1,49 @@
 package bitcamp.java106.pms.dao;
 
 import bitcamp.java106.pms.domain.Member;
+import bitcamp.java106.pms.util.ArrayList;
 
 public class MemberDao {
-    Member[] members = new Member[1000];
-    int memberIndex = 0;
+    
+    private ArrayList collection = new ArrayList();
     
     public void insert(Member member) {
-        members[memberIndex++] = member;
+        collection.add(member);
     }
     
     public Member[] list() {
-        Member[] arr = new Member[memberIndex];
-        for (int i = 0; i < memberIndex; i ++) {
-            arr[i] = members[i];
+        Member[] arr = new Member[collection.size()];
+        for (int i = 0; i < collection.size(); i ++) {
+            arr[i] = (Member) collection.get(i);
         }
         return arr;
     }
     
     public Member get(String id) {
-        int i = getMemberIndex(id);
-        
-        if (i == -1) 
+        int index = getMemberIndex(id);
+        if (index < 0)
             return null;
-        return members[i];
+        return (Member) collection.get(index);
     }
     
     public void update(Member member) {
-        int i = getMemberIndex(member.getId());
-        
-        if (i != -1)
-            members[i] = member;
+        int index = getMemberIndex(member.getId());
+        if (index < 0)
+            return;
+        collection.set(index, member);
     }
     
     public void delete(String id) {
-        int i = getMemberIndex(id);
-        if (i != -1)
-            members[i] = null;
+        int index = getMemberIndex(id);
+        if (index < 0) 
+            return;
+        collection.remove(index);
     }
     
     private int getMemberIndex(String id) {
-        for (int i = 0; i < memberIndex; i++) {
-            if (members[i] == null) continue;
-            if (id.equals(members[i].getId().toLowerCase())) {
+        for (int i = 0; i < collection.size(); i++) {
+            Member originMember = (Member) collection.get(i);
+            if (originMember.getId().toLowerCase().equals(id.toLowerCase())) {
                 return i;
             }
         }
