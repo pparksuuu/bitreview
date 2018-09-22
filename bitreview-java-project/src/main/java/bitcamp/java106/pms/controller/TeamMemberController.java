@@ -1,5 +1,6 @@
 package bitcamp.java106.pms.controller;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.dao.MemberDao;
@@ -78,7 +79,7 @@ public class TeamMemberController {
         System.out.println("[팀 멤버 목록]");
         System.out.print("회원들 : ");
         
-        String[] members = teamMemberDao.getMembers(teamName);
+        Iterator<String> members = teamMemberDao.getMembers(teamName);
         
         for (int i = 0; i < team.getMembers().length; i++) {
             if (team.getMembers()[i] == null) continue;
