@@ -99,13 +99,6 @@ public class App {
         memberDao.insert(member);
         
         member = new Member();
-        member.setId("aaa");
-        member.setEmail("aaa@test.com");
-        member.setPassword("1111");
-        
-        memberDao.insert(member);
-        
-        member = new Member();
         member.setId("bbb");
         member.setEmail("bbb@test.com");
         member.setPassword("1111");

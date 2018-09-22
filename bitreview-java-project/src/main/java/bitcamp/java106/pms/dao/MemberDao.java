@@ -13,7 +13,7 @@ public class MemberDao {
     
     public Member[] list() {
         Member[] arr = new Member[collection.size()];
-        for (int i = 0; i < collection.size(); i ++) {
+        for (int i = 0; i < collection.size(); i++) {
             arr[i] = (Member) collection.get(i);
         }
         return arr;
