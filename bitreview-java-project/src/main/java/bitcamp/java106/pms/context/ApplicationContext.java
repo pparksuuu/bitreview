@@ -11,7 +11,7 @@ public class ApplicationContext {
         if (beans != null) {
             objPool.putAll(beans);
         }
-        
+         
         
     }
 }
