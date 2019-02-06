@@ -15,7 +15,13 @@ public class Classroom {
         this.no = ++count;
     }
 
-    public static int getCount() {
+    @Override
+	public String toString() {
+		return "Classroom [no=" + no + ", title=" + title + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", room=" + room + "]";
+	}
+
+	public static int getCount() {
         return count;
     }
 
@@ -28,6 +34,9 @@ public class Classroom {
     }
 
     public void setNo(int no) {
+    	if (no >= count) {
+    		count = no + 1;
+    	}
         this.no = no;
     }
 

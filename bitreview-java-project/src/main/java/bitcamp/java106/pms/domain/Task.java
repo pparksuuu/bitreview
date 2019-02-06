@@ -35,10 +35,19 @@ public class Task {
     }
 
     public void setNo(int no) {
+    	if (no >= count) {
+    		count = no + 1;
+    	}
         this.no = no;
     }
 
-    public String getTitle() {
+    @Override
+	public String toString() {
+		return "Task [no=" + no + ", title=" + title + ", startDate=" + startDate + ", endDate=" + endDate + ", state="
+				+ state + ", worker=" + worker + ", team=" + team + "]";
+	}
+
+	public String getTitle() {
         return title;
     }
 

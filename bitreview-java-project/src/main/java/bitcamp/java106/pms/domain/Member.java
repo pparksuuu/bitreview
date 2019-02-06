@@ -5,6 +5,11 @@ public class Member {
     private String email;
     private String password;
     
+    public Member() {}
+    
+    public Member(String id) {
+    	this.id = id;
+    }
     
     public String getId() {
         return id;
@@ -24,6 +29,13 @@ public class Member {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", email=" + email + ", password=" + password + "]";
+	}
     
     
 }
+
+// ver 24 - 생성자 추가

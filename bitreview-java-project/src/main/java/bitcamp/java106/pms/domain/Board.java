@@ -18,6 +18,10 @@ public class Board {
         return no;
     }
     public void setNo(int no) {
+    	// 외부에서 입력 받은 번호가 count보다 클 때는 count의 값을 증가시켜야 한다.
+    	if (no >= count) {
+    		count = no + 1;
+    	}
         this.no = no;
     }
     public String getTitle() {
@@ -42,4 +46,5 @@ public class Board {
     
 }
 
+// ver 24 - setNo() 변경
 // ver 18 - 게시물 객체의 고유 번호(no)를 static 변수(count)를 이용하여 자동 설정한다.
