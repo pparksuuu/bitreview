@@ -77,7 +77,7 @@ public class App {
             }
 
             if (menu.equals("quit")) {
-                onQuit();
+                onQuit(); 
                 break;
             } else if (menu.equals("help")) {
                 onHelp();
