@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+     
+     <!-- scope 속성의 기본 값은 singleton -->
+     <!-- singleton 객체는 IoC 컨테이너가 생성될 떄 미리 준비된다. -->
+     <bean id="c1" class="bitcamp.java106.step02_1.Car"/>
+     <bean id="c2" class="bitcamp.java106.step02_1.Car" scope="singleton"/>
+     
+     <!-- prototype 객체는 getBean()을 호출할 떄 생성된다. -->
+     <bean id="c3" class="bitcamp.java106.step02_1.Car" scope="prototype"/>
+</beans>

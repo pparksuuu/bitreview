@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 호출할 생성자 지정하기 III -->
+    
+    <!-- 생성자의 파라미터 값을 지정할 때 constructor-arg 태그가 아닌
+    bean 태그의 속성 값으로 지정할 수 있다.
+    단, beans 태그의 선언부에 다음 설정을 추가해야 한다.
+    xmlns:c="http://www.springframework.org/schema/c" -->
+    <bean id="c1" class="bitcamp.java106.step03_1.Car" c:model="티코"/>
+    <bean id="c2" class="bitcamp.java106.step03_1.Car" c:model="티코" c:cc="890"/>
+    
+    
+</beans>
