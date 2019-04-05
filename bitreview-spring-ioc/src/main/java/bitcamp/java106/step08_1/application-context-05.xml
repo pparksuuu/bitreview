@@ -20,10 +20,9 @@
         다음 객체를 스프링 IoC 컨테이너에 등록하지 않으면,
         @Autowired 애노테이션은 처리되지 않는다.
      -->
-     
      <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
      
-     <bean id="c1" class="bitcamp.java106.step08_1.Car2">
+     <bean id="c1" class="bitcamp.java106.step08_1.Car4">
         <property name="model" value="티코"/>
         <property name="maker" value="비트자동차"/>
         <property name="cc" value="890"/>

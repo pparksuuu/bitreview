@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+     <context:annotation-config/>
+     <!-- 위의 태그를 추가하면, 개발자가 일일이 BeanPostProcessor를 등록할 필요가 없다.
+     내부적으로 관련된 BeanPostProcessor를 자동으로 등록한다.
+     따라서 개발자는 각각의 애노테이션을 처리할 BeanPostProcessor의 이름을
+     암기할 필요가 없어서 편하다! 
+     => 이 태그를 추가하면 @Qualifier 애노테이션을 처리할 BeanPostProcessor가 자동 등록됨!-->
+     
+     <bean id="c1" class="bitcamp.java106.step08_1.Car7">
+        <property name="model" value="티코"/>
+        <property name="maker" value="비트자동차"/>
+        <property name="cc" value="890"/>
+        <property name="auto" value="true"/>
+     </bean>
+     
+     <bean id="e1" class="bitcamp.java106.step08_1.Engine">
+        <property name="maker" value="비트자동차"/>
+        <property name="valve" value="16"/>
+        <property name="cylinder" value="4"/>
+     </bean>
+     
+     <bean id="e2" class="bitcamp.java106.step08_1.Engine">
+        <property name="maker" value="캠프자동차"/>
+        <property name="valve" value="16"/>
+        <property name="cylinder" value="4"/>
+     </bean>
+</beans>
